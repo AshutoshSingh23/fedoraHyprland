@@ -1,0 +1,13 @@
+configuration{
+	icon-theme:                          "Tela-purple";
+}
+
+* {
+	background:			#303446;
+	background-alt:		        #737994;
+	foreground:			#f2d5cf;
+	selected:			#f5bde6;
+	urgent:				#e78284;
+	on:				#8caaee;
+	off:				#949cbb;
+}

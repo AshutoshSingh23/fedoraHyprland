@@ -1,0 +1,39 @@
+#!/bin/sh
+
+#json_data='{ "name": "John Doe", "age": 30, "city": "New York" }'
+
+json_data=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+key_value_pairs=$(echo "$json_data" | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]')
+arr=()
+itr=0
+for pair in $key_value_pairs; do
+  key=$(echo $pair | cut -d'=' -f1)
+  arr[$itr]=$((key + 0))
+  itr=$(( itr + 1 ))
+done
+
+# for ((i=0; i < ${#arr[@]}; i++))
+# do
+#  echo "${arr[$i]}"
+# done
+
+echo "-----------"
+
+# readarray -t arr < <(printf '%s\n' "${arr[@]}" | sort)
+#echo "The sorted list is: ${arr[*]}"
+
+for ((i = 0; i < ${#arr[@]} - 1; i++)); do
+    for ((j = 0; j < ${#arr[@]} - i - 1; j++)); do
+        if [ ${arr[j]} -gt ${arr[$((j+1))]} ]; then
+            # swap
+            temp=${arr[j]}
+            arr[$j]=${arr[$((j+1))]}
+            arr[$((j+1))]=$temp
+        fi
+    done
+done
+
+for ((i=0; i < ${#arr[@]}; i++))
+do
+ echo "${arr[$i]}"
+done | jq --argjson windows "${json_data}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})'

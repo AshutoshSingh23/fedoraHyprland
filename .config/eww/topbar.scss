@@ -1,0 +1,162 @@
+$foreground: #e0e0e0;
+$grey: #8e8e8e;
+$foreground-alt: #465059;
+$background: #353535;
+$black: #292929;
+$red: #ff6565;
+$green: #b8cc52;
+$yellow: #e6c446;
+$blue: #68d4ff;
+$bluegrey: #c0cfe1;
+$magenta: #ffa3aa;
+$cyan: #36a3d9;
+$white: #ffffff;
+$turquoise: #59cbcf;
+$purple: #c586c0;
+$bluegrey1 : #7095df;
+
+.top_bar{
+	//border: 2px solid $bluegrey1;
+	font-size: 13px;
+	all:unset;
+	background-color: $background;
+	border-radius: 10px;
+	padding: 0px 1px 0px 4px;
+}
+
+.launcher{
+	all:unset;
+	background: $cyan;
+	padding: 0px 4px 0px 4px;
+	margin: 4px 4px 4px -3px;
+	border-radius: 8px;
+	color: #292929;
+}
+
+.workspaces-widget {
+	all:unset;
+	border-radius: 10px;
+	margin: 4px 4px 4px 4px;
+	padding: 0px 2px 0px 2px;
+	background: $black;
+}
+
+.windowName{
+	color: $bluegrey;
+}
+
+.empty{
+	color: $grey;
+}
+
+.occupied{
+	margin: 3px 3px 3px 0px;
+	padding: 0px 1px 0px 1px;
+	color: $white;
+}
+
+.current{
+	padding: 0px 20px 0px 20px;
+	margin: 3px 0px 3px 2px;
+	background-color: $cyan;
+	border-radius: 10px;
+	color: $background;
+}
+
+.time{
+	padding: 0px;
+	color: $green;
+}
+
+.timeday{
+	margin-left: -3px;
+}
+
+.wificon{
+	margin-left: -3px;
+}
+
+.connectedwifi{
+	margin-left: 340px;
+}
+
+.clock{
+	padding-left: 0px;
+}
+
+.network{
+	padding: 0px 2px 0px 2px;
+	color: $magenta;
+}
+
+.volrocker{
+	border-radius: 10px;
+	border: 1px solid $purple;
+}
+
+.volrockicon{
+	margin-left: 0px;
+	margin-right: -10px;
+	font-size: 85px;
+	color: $purple;
+}
+
+.volbar{
+	all: unset;
+	margin-left: -35px;
+	margin-right: 10px;
+	border-radius: 24px;
+}
+
+.battery{
+	color: $turquoise;
+}
+
+.volume{
+	color: $purple;
+}
+
+
+scale {
+	border: 2px solid $red;
+}
+
+scale trough {
+	all: unset;
+	background-color: $black;
+	border-radius: 5000px;
+	min-height: 20px;
+	min-width: 120px;
+	margin: 0px 0px 0px 0px;
+}
+
+
+scale trough highlight {
+	all: unset;
+	background-color: $purple;
+	border-radius: 10px;
+}
+
+.volscale{
+    all:unset;
+	margin-right: 10px;
+	margin-left: -10px;
+    border-radius: 1000px;
+}
+
+.powerbutton{
+	all:unset;
+	background: #ff6565;
+	padding: 0px;
+	margin: 4px 0px 4px 8px;
+	border-radius: 8px;
+}
+
+.calndar{
+	border-radius: 20px;
+	border: 1px solid $foreground;
+}
+
+.sep{
+	color: #e6c446;
+}

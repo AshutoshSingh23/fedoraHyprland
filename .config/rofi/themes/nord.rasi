@@ -1,0 +1,13 @@
+configuration{
+	icon-theme:                          "Zafiro-Nord-Black";
+}
+
+* {
+	background:			#2e3440;
+	background-alt:		        #4c566a;
+	foreground:			#e5e9f0;
+	selected:			#81a1c1;
+	urgent:				#bf616a;
+	on:				#8fbcbb;
+	off:				#eceff4;
+}

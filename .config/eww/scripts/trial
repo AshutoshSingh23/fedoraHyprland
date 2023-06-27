@@ -1,0 +1,65 @@
+#!/bin/sh
+
+#json_data='{ "name": "John Doe", "age": 30, "city": "New York" }'
+
+json_data=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+key_value_pairs=$(echo "$json_data" | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]')
+json_array=()
+
+for pair in $key_value_pairs; do
+  key=$(echo $pair | cut -d'=' -f1)
+  value=$(echo $pair | cut -d'=' -f2-)
+  json_object=$(jq -n --arg key "$key" --arg value "$value}" '{id: $key, windows: $value}')
+  json_array+=("$json_object")
+done
+
+# Convert the array to a valid JSON format using jq
+final_json=$(printf '%s\n' "${json_array[@]}" | jq -s '.')
+
+# Output the final JSON
+echo "$final_json"
+
+
+# Access elements in the associative array
+# echo "1: ${my_map["1"]}"
+# echo "2: ${my_map["2"]}"
+# echo "7: ${my_map["7"]}"
+
+# arr=()
+# for pair in $key_value_pairs; do
+#   key=$(echo $pair | cut -d'=' -f1)
+#   arr+=$((key + 0))
+#   #printf "%s\n" $key
+# done
+
+#for ((i=0; i < ${#arr[@]}; i++))
+#do
+#  echo "${arr[$i]}\n"
+#done
+#${key_value_pairs[@]}
+# for key in "${!my_map[@]}"; do
+#   echo "key  : $key"
+#   echo "value: ${my_map[$key]}"
+# done
+
+# for i in "${!my_map[@]}"
+# do
+#     echo "$i" 
+#     echo "${my_map[$i]}"
+# done |
+# jq -n -R 'reduce inputs as $i ({}; . + {  id: ($i|tostring), windows: ($my_map[$i]) })'
+
+# json_array=()
+
+# # Iterate through the map and create JSON objects
+# for key in "${!my_map[@]}"; do
+#   echo "${map[$key]}"
+#   json_object=$(jq -n --arg key "$key" --arg value "${map[$key]}" '{id: $key, windows: $value}')
+#   json_array+=("$json_object")
+# done
+
+# Convert the array to a valid JSON format using jq
+# final_json=$(printf '%s\n' "${json_array[@]}" | jq -s '.')
+
+# # Output the final JSON
+# echo "$final_json"

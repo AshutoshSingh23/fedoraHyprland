@@ -1,0 +1,27 @@
+$foreground: #e0e0e0;
+$grey: #8e8e8e;
+$foreground-alt: #465059;
+$background: #353535;
+$black: #292929;
+$red: #ff6565;
+$green: #b8cc52;
+$yellow: #e6c446;
+$blue: #68d4ff;
+$bluegrey: #c0cfe1;
+$magenta: #ffa3aa;
+$cyan: #36a3d9;
+$white: #ffffff;
+$turquoise: #59cbcf;
+$purple: #c586c0;
+$bluegrey1 : #7095df;
+
+@import "topbar.scss";
+@import "revealer.scss";
+
+* {
+	border: 1px;
+	border-radius: 10px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 1px 0px 4px;
+	font-family: "JetBrains Mono Nerd Font";
+}

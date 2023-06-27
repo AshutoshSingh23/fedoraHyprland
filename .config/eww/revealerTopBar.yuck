@@ -1,0 +1,213 @@
+(include "revealer.yuck")
+(defvar dy "false")
+(defvar net "false")
+
+(defwidget bar[]
+	(centerbox :orientation "h"
+		 :space-evenly true
+		 :class "bar"
+	(launcherandworkspaces)
+	(windowName)
+	(tray)
+	)
+)
+
+
+(defwindow top_bar
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "4px"
+                               :width "99.5%"
+                               :height "28px"
+                               :anchor "top center")
+           :stacking "fg"
+           :exclusive true
+  (bar)
+  )
+
+
+
+(defwidget tray []
+	(box :class "tray"
+	     :orientation "h"
+		 :hexpand "false"
+	     :space-evenly "false"
+		 :spacing "0"
+	     :halign "end"
+	(volume)
+	(sep)
+	(battery)
+	(sep)
+	(network)
+	(sep)
+	(time)
+	(powerbutton)))
+
+(defwidget launcherandworkspaces []
+	(box :class "launcherandworkspaces"
+	     :orientation "h"
+		 :hexpand "false"
+	     :space-evenly "false"
+		 :spacing "3"
+	     :halign "start"
+	(launcher)
+	(workspaces)))
+
+(defwidget launcher []
+	(button :class "launcher"
+	     :orientation "h"
+	     :halign "start"
+		 :onclick "rofi -show drun"
+		 :timeout "10s"
+	" "))
+
+
+(defwidget sep []
+	(box :class "sep"
+	     :orientation "h"
+	"|"))
+
+(defwidget volume []
+	(button :class "volume"
+	     :orientation "h"
+	     :halign "end"
+	     :space-evenly false
+		 :onclick "bash ~/.config/eww/scripts/audio_pop"
+	(box :class "volvalue"
+		 :orientation "h"
+		 (label :text volicon
+		 		:style "font-size: 20px; margin-right: -7px; margin-top: 0px")
+		 vol)))
+
+
+(defwidget time []
+  (revealer-on-hover 
+    :revealvar dy
+    :revealvar-name "dy"
+	:class "time"
+    (label :class "timeday"
+		   :text	time)
+    (box 
+      :space-evenly false
+      day)))
+
+(defwidget network []
+  (revealer-on-hover 
+    :revealvar net
+    :revealvar-name "net"
+	:class "network"
+    (label :class "wificon"
+		   :text wificon)
+    (box 
+      :space-evenly false
+      connectedwifi)))
+
+
+(defwidget battery []
+	(box :class "battery"
+	     :orientation "h"
+	     :halign "center"
+	battery))
+
+
+(defwidget windowName[]
+	(box :class "windowName"
+	     :orientation "h"
+	     :halign "end"
+	     activeWin))
+
+(defwidget powerbutton []
+  (button :class "powerbutton"
+          :onclick "powermenu"
+		  :style "margin-right: 3px; padding-right: 10px; padding-left: 5px; padding-top: 1px; padding-bottom: 2px;"
+    "⏻"
+  )
+)
+
+(defpoll battery :interval "2s"
+	"battery")
+
+(defpoll wificon :interval "5s"
+	"wificon")
+
+(defpoll connectedwifi :interval "5s"
+	"connectedwifi")
+
+(defpoll activeWin :interval "1s"
+	"activeworkspace")
+
+(defpoll vol :interval "0.5s"
+	"ewwvol")
+
+
+(defpoll time :interval "60s"
+	"date '+%H:%M'")
+
+(defpoll day :interval "24h"
+	"date '+%b %d, %Y'")
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+
+(defwidget workspaces []
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" 
+  			:class "workspaces-widget"
+    (box :space-evenly false
+      (label :text "${workspaces}${current_workspace}" 
+	  		:visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}" :style "margin-right: 100px"
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.id}")
+            )
+          )
+        )
+      )
+    )
+  )
+
+
+(defwindow volrocker 
+		:monitor 0
+        :geometry (geometry :x "84.7%"
+                           :y "5px"
+                           :width "15%"
+                           :height "8%")
+        :stacking "fg"
+		(volrock))
+
+(defwidget volrock []
+		(box :class "volrock"
+	     :orientation "h"
+		 :spacing 2
+		 :spacing-evenly false
+	     (volrockicon)
+		 (volbar)))
+
+(defwidget volbar[] 
+		(box :class "volbar"
+			 :orientation "h"
+			 (scale :class "volscale" 
+			   :min 0
+           	   :max 151
+			   :flipped false
+			   :active true
+			   :value vol
+			   :tooltip "${vol}%"
+			   :onchange "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ {}%")))
+
+(defwidget volicon[]
+	(box :class "volicon"
+	     :orientation "h"
+	     volicon))
+
+(defwidget volrockicon[]
+	(box :class "volrockicon"
+	     :orientation "h"
+	     volrockicon))
+
+(defpoll volrockicon :interval "2s"
+	"volrock")
+
+(defpoll volicon :interval "0.5s"
+	"volicon")

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#wall1=$(cat ~/.fehbg | cut -c 28- | rev | cut -c 3- | rev)
+#echo"$(wall1)"
+cp $(cat ~/.fehbg | cut -c 28- | rev | cut -c 3- | rev) ~/Pictures/
+#echo "Picture copied"
+rm ~/Pictures/current.jpg
+cd ~/Pictures
+mv $(cat ~/.fehbg | cut -c 28- | rev | cut -c 3- | rev | cut -d '/' -f 6) current.jpg

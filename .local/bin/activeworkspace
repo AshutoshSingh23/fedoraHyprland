@@ -1,0 +1,2 @@
+#!/bin/sh
+hyprctl activeworkspace | sed -n "5p" | cut -d ":" -f2 

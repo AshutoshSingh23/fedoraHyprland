@@ -1,0 +1,13 @@
+[colors]
+
+bg_dim = #282828
+bg0 = #282828
+red = #cc241d
+orange = #fe8019
+yellow = #fabd2f
+green = #98971a
+blue = #458588
+accent = #b8bb26
+purple = #b16286
+fg = #ebdbb2
+gray = #928374

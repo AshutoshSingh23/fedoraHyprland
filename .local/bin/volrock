@@ -1,0 +1,18 @@
+#!/bin/sh
+
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d " " -f2 | cut -d "." -f2)
+muted1=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d " " -f3)
+muted2="[MUTED]"
+
+if [ "$muted1" = "$muted2" ]; then
+	echo "󰸈 " && exit
+fi
+
+case 1 in
+	$((vol >= 70)) ) icon="󰕾 " ;;
+	$((vol >= 30)) ) icon="󰖀 " ;;
+	$((vol >= 1)) ) icon="󰕿 " ;;
+	* ) echo "󰸈 " && exit ;;
+esac
+
+echo "$icon"

@@ -1,0 +1,14 @@
+configuration{
+	icon-theme:                          "Tela-manjaro-dark";
+}
+
+* {
+	background:			#293136;
+	background-alt:		        #374145;
+	foreground:			#D3C6AA;
+	selected:			#83C092;
+	urgent:				#E67E80;
+	on:				#48584E;
+	off:				#A36584;
+
+}

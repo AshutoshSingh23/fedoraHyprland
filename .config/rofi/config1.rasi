@@ -1,0 +1,149 @@
+configuration {
+	modi:                        "drun,emoji,window,run";
+	show-icons:                  true;
+	display-drun:                "";
+	display-run:                 "";
+	display-emoji:               "󰇵";
+	display-window:              "";
+	drun-display-format:         "{name}";
+	window-format:               "{w}{t}";
+	font:                        "JetBrainsMono Nerd Font 10";
+	icon-theme:                  "Dracula";
+}
+
+@import "~/.config/rofi/colors.rasi"
+
+
+// Main //
+window {
+    transparency:                "real";
+    fullscreen:                  false;
+    enabled:                     true;
+    cursor:                      "default";
+    spacing:                     0px;
+    padding:                     0px;
+    border:                      2px;
+    border-radius:               10px;
+    border-color:                @bg0;
+    background-color:            transparent;
+}
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    orientation:                 horizontal;
+    children:                    [  "inputbar" , "listbox" ];
+    background-color:            transparent;
+	//background-image:            url("~/Pictures/everforest-walls/fog_forest_2.png", height);
+}
+
+
+// Inputs //
+inputbar {
+    enabled:                     true;
+    width:                       25%;
+    children:                    [ "mode-switcher" , "entry" ];
+    background-color:            @background;
+    background-image:            url("~/.config/Pictures/everforest-walls/fog_forest_2.png", height);
+}
+entry {
+    enabled:                     true;
+    heigth:                      1%;
+    padding:                     20px 5px;
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+
+// Modes //
+mode-switcher{
+    orientation:                 vertical;
+    enabled:                     true;
+    spacing:                     0px;
+    width:                       5%;
+    padding:                     160px 10px 160px 10px;
+    spacing:                     25px;
+    background-color:            transparent;
+    background-image:            url("~/.config/Pictures/everforest-walls/fog_forest_2.png", height);
+}
+button {
+    cursor:                      pointer;
+    border-radius:               50px;
+    background-color:            @bg1;
+    text-color:                  @foreground;
+}
+button selected {
+    background-color:            @selected;
+    text-color:                  @bg0;
+}
+
+
+// Lists //
+listbox {
+    spacing:                     10px;
+    padding:                     8px;
+    children:                    [ "listview" ];
+    background-color:            @background;
+}
+listview {
+    enabled:                     true;
+    columns:                     1;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+
+// Elements //
+element {
+    enabled:                     true;
+    spacing:                     3px;
+    padding:                     2px;
+    border-radius:               20px;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+element normal.urgent {
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
+element normal.active {
+    background-color:            @background;
+    text-color:                  @foreground;
+}
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+element selected.urgent {
+    background-color:            @selected;
+    text-color:                  @bgred;
+}
+element selected.active {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+element-icon {
+    size:                        48px;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+element-text {
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}

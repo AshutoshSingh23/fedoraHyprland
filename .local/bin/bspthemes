@@ -1,0 +1,107 @@
+#!/bin/sh
+
+
+
+#time=`date +%Y-%m-%d-%H-%M-%S`
+#dir="`xdg-user-dir PICTURES`/Screenshots"
+#file="Screenshot_${time}.png"
+notify_cmd_shot="dunstify -u low --replace=699 -i /usr/share/archcraft/icons/dunst/picture.png"
+
+everforest="Everforest"
+nord="Nord"
+nord_red="Nord Red"
+dracula="Dracula"
+catppuccin_mocha="Catppuccin Mocha"
+catppuccin_macchiato="Catppuccin Macchiato"
+catppuccin_frappe="Catppuccin Frappe"
+catppuccin_frappe_pink="Catppuccin Frappe Pink"
+gruvbox="Gruvbox"
+
+options="$everforest\n$nord\n$dracula\n$nord_red\n$catppuccin_mocha\n$catppuccin_macchiato\n$catppuccin_frappe\n$catppuccin_frappe_pink\n$gruvbox"
+
+chosen="$(echo -e "$options" | rofi -theme ~/.config/rofi/themes.rasi -p 'Choose Theme' -dmenu -selected-row 0)"
+echo "$chosen"
+case $chosen in
+	$everforest)
+    cp ~/.config/alacritty/themes/everforest.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/everforest.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/everforest ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/everforest.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/everforest/fog_forest_2.png
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+  $nord)
+    cp ~/.config/alacritty/themes/nord.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/nord.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/nord ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/nord.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/nord/5.jpeg
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+  $nord_red)
+    cp ~/.config/alacritty/themes/nord-red.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/nord-red.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/nord-red ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/nord-red.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/nord-red/1.jpeg
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+	$dracula)
+    cp ~/.config/alacritty/themes/dracula.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/dracula.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/dracula ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/dracula.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/dracula/2.jpeg
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+	$catppuccin_mocha)
+    cp ~/.config/alacritty/themes/catppuccin-mocha.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/catppuccin-mocha.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/catppuccin-mocha ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/catppuccin-mocha.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/Catppuccin/4.png
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+	$catppuccin_macchiato)
+    cp ~/.config/alacritty/themes/catppuccin-macchiato.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/catppuccin-macchiato.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/catppuccin-macchiato ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/catppuccin-macchiato.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/Catppuccin/5.png
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+	$catppuccin_frappe)
+    cp ~/.config/alacritty/themes/catppuccin-frappe.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/catppuccin-frappe.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/catppuccin-frappe ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/catppuccin-frappe.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/Catppuccin/3.png
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+	$catppuccin_frappe_pink)
+    cp ~/.config/alacritty/themes/catppuccin-frappe-pink.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/catppuccin-frappe-pink.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/catppuccin-frappe-pink ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/catppuccin-frappe-pink.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale ~/Pictures/Catppuccin/10.jpeg
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+	$gruvbox)
+    cp ~/.config/alacritty/themes/gruvbox.yml ~/.config/alacritty/colors.yml
+    cp ~/.config/rofi/themes/gruvbox.rasi ~/.config/rofi/colors.rasi
+    cp ~/.config/bspwm/polybar/themes/gruvbox ~/.config/bspwm/polybar/colors
+		cp ~/.config/bspwm/gtk-3.0-themes/gruvbox.ini ~/.config/gtk-3.0/settings.ini
+    feh --bg-scale /home/asmj/Pictures/gruvbox/forest-hut.jpg
+    pkill polybar
+    polybar -q example -c ~/.config/bspwm/polybar/config & disown
+	;;
+esac
+rofiimg

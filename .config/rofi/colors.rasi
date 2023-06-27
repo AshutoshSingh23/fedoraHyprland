@@ -1,0 +1,14 @@
+configuration{
+	icon-theme:                          "Tela";
+}
+
+* {
+	background:			#353535;
+	background-alt:		        #545454;
+	foreground:			#e0e0e0;
+	selected:	                #36a3d9;
+	urgent:				#f44747;
+	on:				#569cd6;
+	off:				#3d3c3c;
+
+}

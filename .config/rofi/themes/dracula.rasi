@@ -1,0 +1,14 @@
+configuration{
+	icon-theme:                          "Dracula";
+}
+
+* {
+	background:			#282A36;
+	background-alt:		        #44475A;
+	foreground:			#F8F8F2;
+	selected:			#9483fc;
+	urgent:				#FF5555;
+	on:				#ff79c6;
+	off:				#44475a;
+
+}

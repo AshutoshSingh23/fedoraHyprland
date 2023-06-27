@@ -1,0 +1,14 @@
+configuration{
+	icon-theme:                          "Gruvbox-Material-Dark";
+}
+
+* {
+	background:			#282828;
+	background-alt:		        #665c54;
+	foreground:			#ebdbb2;
+	selected:	                #b8bb26;
+	urgent:				#fb4934;
+	on:				#b8bb26;
+	off:				#7c6f64;
+
+}
