@@ -1,0 +1,10 @@
+#!/bin/sh
+muted1=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d " " -f3)
+muted2="[MUTED]"
+
+if [ "$muted1" = "$muted2" ]; then
+	exit
+fi
+
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d "." -f2)
+printf "%d\n" "$vol"
